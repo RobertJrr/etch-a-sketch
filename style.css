@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+}
+
+.square{
+    border: 2px solid blue;
+    width: 16px;
+    height: 16px;
+}
