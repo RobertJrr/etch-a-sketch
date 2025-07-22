@@ -4,12 +4,66 @@
     box-sizing: border-box;
 }
 
+html{
+    /* adding background color to entire page */
+    background-color: rgba(255, 255, 255, 0.688);
+}
+
+/* flex container */
 body{
     min-height: 100vh;
+    /* making into a flex container */
+    display: flex;
+    /* centering flex items horizontally */
+    justify-content: center;
+    /* aligning flex items vertically */
+    align-items: center;
+    /* Making items display in column */
+    flex-direction: column;
+    
+}
+
+h1{
+    padding: 1em;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* flex container */
+#container{
+    /* making into a flex container */
+    display: flex;
+    /* to have the flex items wrap */
+    flex-wrap: wrap;
+    /* height and width */
+    height: 520px;
+    width: 520px;
+    /* border size and color */
+    border: 4px solid black;   
+    align-content: center;
 }
 
 .square{
-    border: 2px solid blue;
-    width: 16px;
-    height: 16px;
+    border: 2px solid rgb(76, 74, 74);
+    background-color:white;
+    width: 32px;
+    height: 32px;
 }
+
+#newgridbutton{
+    padding: 10px;
+    margin-top: 2.5em;
+    border-radius: 4px;
+    font-weight: bold;
+    transition-duration: 1s;
+
+}
+
+button:hover{
+    background-color: aqua;
+    cursor: pointer;
+    box-shadow: 5px 5px;
+    /* set width and height larger by 1.2x */
+    transform: scale(1.2);
+}
+
