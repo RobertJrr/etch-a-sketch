@@ -2,7 +2,7 @@
 
 //Simple Etch-a-Sketch project
 
-// testing on branch
+// testing on branch - we are on branch
 //------------------------------------------------------
 
 
