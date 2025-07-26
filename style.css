@@ -52,6 +52,9 @@ h1{
 
 #newgridbutton{
     padding: 10px;
+    background-color: #5e5d5d;
+    width: 200px;
+    color: white;
     margin-top: 2.5em;
     border-radius: 4px;
     font-weight: bold;
@@ -60,7 +63,7 @@ h1{
 }
 
 button:hover{
-    background-color: aqua;
+    background-color: #1e1e1e!important;
     cursor: pointer;
     box-shadow: 5px 5px;
     /* set width and height larger by 1.2x */
