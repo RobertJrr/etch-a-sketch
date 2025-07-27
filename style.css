@@ -29,8 +29,10 @@ body{
 
 main{
     background-color: rgb(0, 0, 0);
-    padding-top: 3em;
+    padding-top: 2em;
     border-radius: 5%;
+    width: 720px;
+    height: 720px;
 }
 
 h1{
@@ -45,19 +47,21 @@ h1{
     display: flex;
     /* to have the flex items wrap */
     flex-wrap: wrap;
+    align-content: flex-start;
     /* height and width */
-    height: 520px;
-    width: 520px;
+    height: 600px;
+    width: 600px;
     /* border size and color */
-    border: 4px solid black; 
     margin: 0 auto;  
 }
 
 .square{
-    border: 2px solid rgb(76, 74, 74);
+    border: 2px solid white;
     background-color:white;
-    width: 32px;
-    height: 32px;
+    /* initial size for 16x16 */
+    /* width: 36px;
+    height: 36px; */
+  
 }
 
 button{
@@ -72,6 +76,8 @@ button{
     margin: 20px;
 
 }
+
+
 
 button:hover{
     background-color: yellow!important;
