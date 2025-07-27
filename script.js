@@ -48,7 +48,7 @@ createGrid(initialGridSize);
 attachHoverEffect();
 
 //reference to button
-const resetButton = document.querySelector("button");
+const resetButton = document.querySelector("#newgridBtn");
 
 //adding event listener to button to reset
 resetButton.addEventListener("click",function(){
