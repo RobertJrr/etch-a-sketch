@@ -32,7 +32,7 @@ main{
     padding-top: 2em;
     border-radius: 5%;
     width: 720px;
-    height: 720px;
+    height: 750px;
 }
 
 h1{
@@ -64,6 +64,13 @@ h1{
   
 }
 
+#buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 button{
     padding: 10px;
     background-color: #5e5d5d;
@@ -73,7 +80,6 @@ button{
     border-radius: 4px;
     font-weight: bold;
     transition-duration: 1s;
-    margin: 20px;
 
 }
 
