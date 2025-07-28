@@ -42,7 +42,7 @@ h1{
 }
 
 /* flex container */
-#container{
+#gridContainer{
     /* making into a flex container */
     display: flex;
     /* to have the flex items wrap */
@@ -57,11 +57,7 @@ h1{
 
 .square{
     border: 2px solid white;
-    background-color:white;
-    /* initial size for 16x16 */
-    /* width: 36px;
-    height: 36px; */
-  
+    background-color: white;
 }
 
 #buttonContainer{
