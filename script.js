@@ -47,8 +47,13 @@ const maxSize = 100;
 const initialGridSize = Math.pow(16,2);
 //get reference to the container for grid
 const containerRef = document.querySelector("#container");
-//reference to button
-const resetButton = document.querySelector("#newgridBtn");
+//references to buttons
+const newGridBtn = document.querySelector("#newgridBtn");
+const rainbowBtn = document.querySelector("#rainbowBtn");
+const colorBtn = document.querySelector("#colorBtn");
+const eraserBtn = document.querySelector("#eraserBtn");
+const clearBtn = document.querySelector("#clearBtn");
+
 
 
 //creating initial grid 16x16 
@@ -56,7 +61,7 @@ createGrid(initialGridSize);
 attachHoverEffect();
 
 //adding event listener to button to reset
-resetButton.addEventListener("click",function(){
+newGridBtn.addEventListener("click",function(){
     // prompt user for new size
     let newSize = Number(prompt("Enter new size"));
 
