@@ -1,8 +1,9 @@
 //Robert M.
 //Simple Etch-a-Sketch project
-//Testing on branch - we are on branch
-//------------------------------------------------------
 
+//User will be able to specify size of grid
+//Will include functionalities for new grid, rainbow, color, eraser 
+//and clear options
 
 //-----------------------Functions---------------------------
 
@@ -16,7 +17,7 @@ function getRandomColor(){
     return color;
 }
 
-
+//function to get a specific color
 function getAColor(){
     let color = document.getElementById("colorpicker").value;
     return color;
@@ -31,7 +32,6 @@ function eraser(){
 function clear(totalSquares){
     gridContainer.innerHTML = "";
     createGrid(totalSquares);
-
 }
 
 //new grid function to create new grid
@@ -40,7 +40,7 @@ function newGridFunction(){
     let newSize = Number(prompt("Enter new size"));
 
     //if user enters size that exceeds max size
-    while (newSize > maxSquares || newSize < 1){
+    while (newSize > MAX_SQUARES || newSize < 1){
         alert("Invalid Size! Try Again!");
         newSize = Number(prompt("Enter new size"));
     }
@@ -52,14 +52,13 @@ function newGridFunction(){
     createGrid(totalSquares);
     //reeattach mouseenter listeners to new squares created
     activate();
-
 }
 
 //function to create actual grid (helper)
 //formula for each square size = 600px / sqrt(totalSquares) = Xpx per square;
 function createGrid(totalSquares){
     //get size of each square cell (length and height)
-    let squareLength = gridLength / Math.sqrt(totalSquares);
+    let squareLength = GRID_LENGTH / Math.sqrt(totalSquares);
 
     //add square div to grid container parent
     for(let i = 0; i < totalSquares; i++){
@@ -77,7 +76,7 @@ function createGrid(totalSquares){
 function activate(currentMode){
     const squares = document.querySelectorAll(".square");
     squares.forEach((square)=>{
-        square.addEventListener("mouseenter",(e)=>{
+        square.addEventListener("mouseenter",()=>{
             // if mouse isnt down, do nothing
             if(!mouseDown){
                 return;
@@ -96,7 +95,7 @@ function activate(currentMode){
 
 
 //max grid size allowed (num squares per row and column)
-const maxSquares = 100;
+const MAX_SQUARES = 100;
 //total squares (16^2 = 256 squares(initial))
 let totalSquares = Math.pow(16,2);
 //get reference to the container for grid
@@ -108,10 +107,7 @@ const clearbtn = document.querySelector("#clearBtn");
 //reference to rest of buttons 
 const allButtons = document.querySelectorAll("#colorBtn,#rainbowBtn,#eraserBtn");
 //grid container size (length and width, same size)
-const gridLength = gridContainer.offsetWidth;
-
-//for current mode
-let currentMode = "";
+const GRID_LENGTH = gridContainer.offsetWidth;
 
 //mousedown variable
 let mouseDown = false;
@@ -120,14 +116,15 @@ document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
 
 
-
+//for current mode
+let currentMode = "";
 //-----------------------Start---------------------------
 
 //creating initial grid 16x16 
 createGrid(totalSquares);
 activate();
 
-//adding event listener for each button besides new Grid Button
+//adding event listener for each button besides new Grid Button and clear button
 allButtons.forEach(button =>{
     button.addEventListener("click",() =>{
         currentMode = button.id;
