@@ -51,7 +51,7 @@ function newGridFunction(){
     //then create new one
     createGrid(totalSquares);
     //reeattach mouseenter listeners to new squares created
-    activate();
+    activate(newGridBtn);
 }
 
 //function to create actual grid (helper)
@@ -74,6 +74,9 @@ function createGrid(totalSquares){
 
 //activate function, activates based on last button clicked
 function activate(button){
+    if(button != lastButton  && lastButton != null){
+        lastButton.classList.remove("active");
+    }
 
     const squares = document.querySelectorAll(".square");
     squares.forEach((square)=>{
@@ -87,9 +90,13 @@ function activate(button){
                 square.style.backgroundColor = eraser();
             }else if(button.id === "colorBtn" && mouseDown){
                 square.style.backgroundColor = getAColor();
+            }else if(button.id === "clearBtn"){
+                button.classList.remove("active");
             }
         });
     });
+    button.classList.add("active");
+    lastButton = button;
 }
 
 //-----------------------Variables---------------------------
@@ -106,8 +113,8 @@ const newGridBtn = document.querySelector("#newgridBtn");
 //reference to clear button
 const clearbtn = document.querySelector("#clearBtn");
 //reference to rest of buttons 
-const allButtons = document.querySelectorAll("#colorBtn,#rainbowBtn,#eraserBtn");
-//grid container size (length and width, same size)
+const allButtons = document.querySelectorAll("#colorBtn,#rainbowBtn,#eraserBtn,#clearBtn");
+//grid container size (length and width are same size)
 const GRID_LENGTH = gridContainer.offsetWidth;
 
 //mousedown variable
@@ -119,17 +126,18 @@ document.body.onmouseup = () => mouseDown = false;
 
 //for current mode
 let currentMode = "";
+// last button
+let lastButton = null;
 //-----------------------Start---------------------------
 
 //creating initial grid 16x16 
 createGrid(totalSquares);
-activate();
+activate(newGridBtn);
 
 //adding event listener for each button besides new Grid Button and clear button
 allButtons.forEach(button =>{
     button.addEventListener("click",() =>{
         activate(button);
-
     });
 });
 

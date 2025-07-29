@@ -98,11 +98,15 @@ button:hover{
     transform: scale(1.2);
 }
 
-
-button:focus{
+.active{
     background-color: var(--lighteryellow); 
     color: black;
+}
 
+
+#clearBtn:focus{
+    background-color: var(--lighteryellow);
+    color: black;
 }
 
 input[type=color] {
