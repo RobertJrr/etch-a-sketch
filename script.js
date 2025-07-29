@@ -16,19 +16,25 @@ function getRandomColor(){
     return color;
 }
 
+
+function getAColor(){
+    let color = document.getElementById("colorpicker").value;
+    return color;
+}
+
 //function to erase colors
 function eraser(){
     return "white";
 }
 
-// clear the entire grid
+//clear the entire grid
 function clear(totalSquares){
     gridContainer.innerHTML = "";
     createGrid(totalSquares);
 
 }
 
-//new grid function to prompt user for new grid size and create new grid
+//new grid function to create new grid
 function newGridFunction(){
     // prompt user for new size
     let newSize = Number(prompt("Enter new size"));
@@ -49,8 +55,8 @@ function newGridFunction(){
 
 }
 
-//function to create grid
-//formula for each square size = 600px / numberOfSquares = Xpx size;
+//function to create actual grid (helper)
+//formula for each square size = 600px / sqrt(totalSquares) = Xpx per square;
 function createGrid(totalSquares){
     //get size of each square cell (length and height)
     let squareLength = gridLength / Math.sqrt(totalSquares);
@@ -67,7 +73,7 @@ function createGrid(totalSquares){
     }
 }
 
-//hover function to change color of squares on grid
+//activate function, activates based on last button clicked
 function activate(currentMode){
     const squares = document.querySelectorAll(".square");
     squares.forEach((square)=>{
@@ -79,33 +85,40 @@ function activate(currentMode){
                 square.style.backgroundColor = getRandomColor();
             }else if(currentMode === "eraserBtn" && mouseDown){
                 square.style.backgroundColor = eraser();
+            }else if(currentMode === "colorBtn" && mouseDown){
+                square.style.backgroundColor = getAColor();
             }
         });
     });
 }
 
 //-----------------------Variables---------------------------
-//grid container size (length and width, same size)
-const gridLength = 600;
-//max grid size (num squares per row and column)
+
+
+//max grid size allowed (num squares per row and column)
 const maxSquares = 100;
-//initial grid size (16^2 = 256 squares)
+//total squares (16^2 = 256 squares(initial))
 let totalSquares = Math.pow(16,2);
 //get reference to the container for grid
 const gridContainer = document.querySelector("#gridContainer");
 //reference to new Grid Button
 const newGridBtn = document.querySelector("#newgridBtn");
-// reference to clear button
+//reference to clear button
 const clearbtn = document.querySelector("#clearBtn");
-//list of some buttons 
+//reference to rest of buttons 
 const allButtons = document.querySelectorAll("#colorBtn,#rainbowBtn,#eraserBtn");
+//grid container size (length and width, same size)
+const gridLength = gridContainer.offsetWidth;
+
 //for current mode
 let currentMode = "";
+
 //mousedown variable
 let mouseDown = false;
 //event listeners to set truth value of mouseDown
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
+
 
 
 //-----------------------Start---------------------------
@@ -128,6 +141,7 @@ newGridBtn.addEventListener("click",newGridFunction);
 clearbtn.addEventListener("click",()=>{
     clear(totalSquares);
 });
+
 
 
 
