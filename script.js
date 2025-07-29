@@ -73,18 +73,19 @@ function createGrid(totalSquares){
 }
 
 //activate function, activates based on last button clicked
-function activate(currentMode){
+function activate(button){
+
     const squares = document.querySelectorAll(".square");
     squares.forEach((square)=>{
         square.addEventListener("mouseenter",()=>{
             // if mouse isnt down, do nothing
             if(!mouseDown){
                 return;
-            }else if(currentMode === "rainbowBtn" && mouseDown){
+            }else if(button.id === "rainbowBtn" && mouseDown){
                 square.style.backgroundColor = getRandomColor();
-            }else if(currentMode === "eraserBtn" && mouseDown){
+            }else if(button.id === "eraserBtn" && mouseDown){
                 square.style.backgroundColor = eraser();
-            }else if(currentMode === "colorBtn" && mouseDown){
+            }else if(button.id === "colorBtn" && mouseDown){
                 square.style.backgroundColor = getAColor();
             }
         });
@@ -127,8 +128,8 @@ activate();
 //adding event listener for each button besides new Grid Button and clear button
 allButtons.forEach(button =>{
     button.addEventListener("click",() =>{
-        currentMode = button.id;
-        activate(currentMode);
+        activate(button);
+
     });
 });
 

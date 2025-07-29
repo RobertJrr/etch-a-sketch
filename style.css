@@ -5,6 +5,7 @@
 }
 :root{
     --butteryellow: #fcfa747d;
+    --lighteryellow: #f3f374;
 }
 
 html{
@@ -95,6 +96,13 @@ button:hover{
     cursor: pointer;
     /* set width and height larger by 1.2x */
     transform: scale(1.2);
+}
+
+
+button:focus{
+    background-color: var(--lighteryellow); 
+    color: black;
+
 }
 
 input[type=color] {
